@@ -1,0 +1,234 @@
+{% extends 'base/base.html' %}
+
+{% block title %}KonvoAI - Contact Us{% endblock %}
+
+{% block content %}
+<section class="contact-section py-5">
+  <div class="container">
+    <h1 class="text-center mb-4 welcome-title">Contact KonvoAI</h1>
+    <div class="text-center mb-5">
+      <i class="fas fa-envelope" style="font-size: 4rem; color: #00d4ff;"></i>
+    </div>
+    <p class="text-center lead mb-5">Get in touch with us to explore how our AI solutions can transform your business.</p>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="contact-content p-4" style="background: linear-gradient(145deg, #1a1a1a, #2a2a2a); border: 2px solid #00d4ff; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);">
+          <h2 class="text-center mb-4">Send Us a Message</h2>
+          <!-- Display success/error messages -->
+          {% if messages %}
+            <div class="text-center mb-4">
+              {% for message in messages %}
+                <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <!-- Multi-step Form -->
+          <form method="post" action="{% url 'contact' %}" id="contactForm">
+            {% csrf_token %}
+            <!-- Display form-level errors -->
+            {% if form.errors %}
+              <div class="alert alert-danger mb-4">
+                <ul>
+                  {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                      <li>{{ field }}: {{ error }}</li>
+                    {% endfor %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            <!-- Step 1: Name -->
+            <div class="form-step" id="step-1">
+              <div class="form-group">
+                <label for="id_name">Name:</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                  <div class="text-danger">
+                    {% for error in form.name.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary" onclick="nextStep(1)">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Email -->
+            <div class="form-step" id="step-2" style="display: none;">
+              <div class="form-group">
+                <label for="id_email">Email:</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                  <div class="text-danger">
+                    {% for error in form.email.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary mr-2" onclick="prevStep(2)">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Subject -->
+            <div class="form-step" id="step-3" style="display: none;">
+              <div class="form-group">
+                <label for="id_subject">Subject:</label>
+                {{ form.subject }}
+                {% if form.subject.errors %}
+                  <div class="text-danger">
+                    {% for error in form.subject.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary mr-2" onclick="prevStep(3)">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Message -->
+            <div class="form-step" id="step-4" style="display: none;">
+              <div class="form-group">
+                <label for="id_message">Message:</label>
+                {{ form.message }}
+                {% if form.message.errors %}
+                  <div class="text-danger">
+                    {% for error in form.message.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary mr-2" onclick="prevStep(4)">Previous</button>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Connect With Us Section (hidden by default) -->
+          <div id="connectSection" style="display: none;">
+            <h2 class="text-center mb-4 mt-5">Connect With Us</h2>
+            <div class="text-center mb-4">
+              <p>Have questions? Reach out to us directly or connect via social media.</p>
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:support@konvoai.com">support@konvoai.com</a></li>
+                <li class="mb-2"><i class="fas fa-phone mr-2"></i> Phone: +1 (800) 123-4567</li>
+                <li class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Address: 123 AI Street, Tech City, TC 12345</li>
+              </ul>
+            </div>
+          
+            <div class="d-flex justify-content-center flex-wrap">
+              <a href="#" class="btn btn-primary mx-2 mb-2"><i class="fab fa-twitter mr-2"></i> Twitter</a>
+              <a href="#" class="btn btn-primary mx-2 mb-2"><i class="fab fa-linkedin mr-2"></i> LinkedIn</a>
+              <a href="#" class="btn btn-primary mx-2 mb-2"><i class="fab fa-facebook mr-2"></i> Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function nextStep(currentStep) {
+    const currentField = document.querySelector(`#step-${currentStep} input, #step-${currentStep} textarea`);
+    if (!currentField.value.trim()) {
+      alert("Please fill out this field before proceeding.");
+      return;
+    }
+    document.getElementById(`step-${currentStep}`).style.display = 'none';
+    document.getElementById(`step-${currentStep + 1}`).style.display = 'block';
+  }
+
+  function prevStep(currentStep) {
+    document.getElementById(`step-${currentStep}`).style.display = 'none';
+    document.getElementById(`step-${currentStep - 1}`).style.display = 'block';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const successMessage = document.querySelector('.alert-success');
+    if (successMessage) {
+      document.getElementById('connectSection').style.display = 'block';
+      document.getElementById('contactForm').style.display = 'none';
+    }
+  });
+</script>
+
+<style>
+.contact-section {
+  background-color: #111;
+  min-height: 100vh;
+}
+.contact-content {
+  transition: transform 0.3s ease;
+}
+.contact-content:hover {
+  transform: scale(1.02);
+}
+.contact-content ul li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+.form-group label {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.form-control {
+  background-color: #333;
+  border: 1px solid #00d4ff;
+  color: #fff;
+  border-radius: 8px;
+}
+.form-control:focus {
+  background-color: #333;
+  color: #fff;
+  border-color: #00d4ff;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+.btn-primary {
+  background: linear-gradient(145deg, #007bff, #00d4ff);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(145deg, #00d4ff, #007bff);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+.alert {
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+.alert-success {
+  background-color: #28a745;
+  color: #fff;
+}
+.alert-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+.text-danger {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+</style>
+{% endblock %}

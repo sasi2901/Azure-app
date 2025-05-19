@@ -1,0 +1,120 @@
+{% extends 'base/base.html' %} {% load static %} {% block title %}KonvoAI -
+Login{% endblock %} {% block content %}
+<section class="login-section py-5">
+  <div class="container">
+    <h1 class="text-center mb-4 welcome-title">Login to KonvoAI</h1>
+    <p class="text-center mb-5 lead">
+      Access your account to explore our AI-driven solutions.
+    </p>
+ 
+    {% if form.errors %}
+    <div class="alert alert-danger">
+      Your username and password didn't match. Please try again.
+    </div>
+    {% endif %} {% if next %} {% if user.is_authenticated %}
+    <div class="alert alert-warning">
+      Your account doesn't have access to this page.
+    </div>
+    {% else %}
+    <div class="alert alert-info">Please login to see this page.</div>
+    {% endif %} {% endif %}
+ 
+    <div class="login-container mx-auto" style="max-width: 500px">
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_username" class="form-label">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="id_username"
+            class="form-control"
+            required
+            autofocus
+          />
+        </div>
+        <div class="form-group">
+          <label for="id_password" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="id_password"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <a
+            href="{% url 'password_reset' %}"
+            class="text-muted"
+            style="color: #00d4ff !important"
+          >
+            Forgot Password?
+          </a>
+          <button type="submit" class="btn btn-primary login-btn">Login</button>
+          <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+      </form>
+      <p class="text-center mt-4">
+        Don't have an account?
+        <a href="{% url 'signup' %}" style="color: #00d4ff">Sign Up</a>
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %} {% block scripts %} {{ block.super }}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Auto-focus is already handled by the autofocus attribute
+  });
+</script>
+<style>
+  .login-section {
+    background-color: #111;
+    min-height: 100vh;
+    padding-top: 60px;
+  }
+  .login-container {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #00d4ff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+    padding: 2rem;
+  }
+  .form-label {
+    color: #fff;
+    font-weight: 400;
+  }
+  .form-control {
+    background-color: #333;
+    border: 1px solid #00d4ff;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 15px;
+  }
+  .form-control:focus {
+    background-color: #444;
+    color: #fff;
+    border-color: #00d4ff;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  .login-btn {
+    background: linear-gradient(145deg, #007bff, #00d4ff);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+  }
+  .alert {
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+</style>
+{% endblock %}
+ 
+ 

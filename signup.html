@@ -1,0 +1,255 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}KonvoAI - Sign Up{% endblock %}
+
+{% block content %}
+<section class="signup-section py-5">
+  <div class="container">
+    <h1 class="text-center mb-4 welcome-title">Sign Up for KonvoAI</h1>
+    <p class="text-center mb-5 lead">
+      Create an account to explore our AI-driven solutions.
+    </p>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="signup-container mx-auto" style="max-width: 500px">
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="{{ form.first_name.id_for_label }}" class="form-label">
+            {{ form.first_name.label }}
+          </label>
+          {{ form.first_name }}
+          {% if form.first_name.help_text %}
+          <small class="form-text text-muted">{{ form.first_name.help_text }}</small>
+          {% endif %}
+          {% if form.first_name.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.first_name.errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.last_name.id_for_label }}" class="form-label">
+            {{ form.last_name.label }}
+          </label>
+          {{ form.last_name }}
+          {% if form.last_name.help_text %}
+          <small class="form-text text-muted">{{ form.last_name.help_text }}</small>
+          {% endif %}
+          {% if form.last_name.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.last_name.errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.username.id_for_label }}" class="form-label">
+            {{ form.username.label }}
+          </label>
+          {{ form.username }}
+          {% if form.username.help_text %}
+          <small class="form-text text-muted">{{ form.username.help_text }}</small>
+          {% endif %}
+          {% if form.username.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.username.errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.email.id_for_label }}" class="form-label">
+            {{ form.email.label }}
+          </label>
+          {{ form.email }}
+          {% if form.email.help_text %}
+          <small class="form-text text-muted">{{ form.email.help_text }}</small>
+          {% endif %}
+          {% if form.email.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.email.errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.password1.id_for_label }}" class="form-label">
+            {{ form.password1.label }}
+          </label>
+          {{ form.password1 }}
+          {% if form.password1.help_text %}
+          <small class="form-text text-muted">{{ form.password1.help_text|safe }}</small>
+          {% endif %}
+          {% if form.password1.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.password1.errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.password2.id_for_label }}" class="form-label">
+            {{ form.password2.label }}
+          </label>
+          {{ form.password2 }}
+          {% if form.password2.help_text %}
+          <small class="form-text text-muted">{{ form.password2.help_text }}</small>
+          {% endif %}
+          {% if form.password2.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.password2.errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <button type="submit" class="btn btn-primary signup-btn">
+            Sign Up
+          </button>
+        </div>
+      </form>
+      <p class="text-center mt-4">
+        Already have an account?
+        <a href="{% url 'login' %}" style="color: #00d4ff">Log In</a>
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<style>
+  body {
+    background-color: #0d1117;
+  }
+
+  .signup-section {
+    background-color: #0d1117;
+    min-height: 100vh;
+    padding-top: 60px;
+  }
+
+  .signup-container {
+    background-color: #161b22;
+    border: 2px solid #00bfff;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #00bfff;
+    padding: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #00bfff;
+    border-radius: 6px;
+    background-color: #0d1117;
+    color: #ffffff;
+    font-size: 1rem;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #1f6feb;
+    box-shadow: 0 0 5px #1f6feb;
+    background-color: #161b22;
+  }
+
+  .form-text {
+    color: #c9d1d9;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+
+  .form-text ul {
+    margin: 0.5rem 0 0 1rem;
+    padding-left: 0;
+  }
+
+  .form-text li {
+    margin-bottom: 0.3rem;
+  }
+
+  .alert {
+    background-color: #ff4d4f;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-top: 10px;
+  }
+
+  .alert-success {
+    background-color: #28a745;
+  }
+
+  .signup-btn {
+    background: linear-gradient(145deg, #007bff, #00d4ff);
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .signup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px #00d4ff;
+  }
+
+  .welcome-title {
+    color: #00bfff;
+    font-weight: 700;
+    font-size: 2.2rem;
+  }
+
+  .lead {
+    color: #8b949e;
+    font-size: 1.1rem;
+  }
+
+  a {
+    color: #00d4ff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+{% endblock %}

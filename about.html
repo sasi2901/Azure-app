@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+
+{% block title %}KonvoAI - About Us{% endblock %}
+
+{% block content %}
+<section class="about-section py-5">
+  <div class="container">
+    <h1 class="text-center mb-4 welcome-title">About KonvoAI</h1>
+    <div class="text-center mb-5">
+      <i class="fas fa-robot" style="font-size: 4rem; color: #00d4ff;"></i>
+    </div>
+    <p class="text-center lead mb-5">Empowering businesses with intelligent chatbots and AI agents.</p>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="about-content p-4" style="background: linear-gradient(145deg, #1a1a1a, #2a2a2a); border: 2px solid #00d4ff; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);">
+          <h2 class="text-center mb-4">Who We Are</h2>
+          <p class="text-center">KonvoAI is a leading innovator in artificial intelligence, specializing in the development of advanced chatbots and AI agents designed to transform business operations. Our mission is to deliver seamless, intelligent, and scalable AI solutions that enhance customer engagement, streamline processes, and drive growth.</p>
+          
+          <h2 class="text-center mb-4 mt-5">What We Do</h2>
+          <p class="text-center">At KonvoAI, we create state-of-the-art chatbots and AI agents tailored to meet the unique needs of businesses across industries. From customer support and healthcare to e-commerce and insurance, our AI solutions provide:</p>
+          <ul class="text-center list-unstyled">
+            <li><i class="fas fa-comment-dots mr-2"></i> 24/7 customer support with natural language understanding.</li>
+            <li><i class="fas fa-cogs mr-2"></i> Automated workflows for increased efficiency.</li>
+            <li><i class="fas fa-chart-line mr-2"></i> Data-driven insights to optimize business decisions.</li>
+          </ul>
+          
+          <h2 class="text-center mb-4 mt-5">Why Choose KonvoAI?</h2>
+          <p class="text-center">Our AI-powered solutions are designed to be intuitive, customizable, and scalable, helping businesses of all sizes achieve their goals. Partner with KonvoAI to:</p>
+          <ul class="text-center list-unstyled">
+            <li><i class="fas fa-star mr-2"></i> Enhance customer satisfaction with instant, accurate responses.</li>
+            <li><i class="fas fa-rocket mr-2"></i> Boost productivity by automating repetitive tasks.</li>
+            <li><i class="fas fa-shield-alt mr-2"></i> Ensure data security and compliance with industry standards.</li>
+          </ul>
+          
+          <h2 class="text-center mb-4 mt-5">Get to Know Us</h2>
+          <div class="d-flex justify-content-center flex-wrap">
+            <a href="{% url 'team'%}" class="btn btn-primary mx-2 mb-2">Our Team</a>
+            <a href="{% url 'contact' %}" class="btn btn-primary mx-2 mb-2">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.about-section {
+  background-color: #111;
+  min-height: 100vh;
+}
+.about-content {
+  transition: transform 0.3s ease;
+}
+.about-content:hover {
+  transform: scale(1.02);
+}
+.about-content ul li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+.btn-primary {
+  background: linear-gradient(145deg, #007bff, #00d4ff);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(145deg, #00d4ff, #007bff);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+</style>
+{% endblock %}

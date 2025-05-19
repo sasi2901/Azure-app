@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+
+{% block title %}KonvoAI - Insurance Solutions{% endblock %}
+
+{% block content %}
+  <section class="healthcare-section py-5">
+    <div class="container">
+      <h1 class="text-center mb-4">Insurance Solutions</h1>
+      <p class="text-center mb-5">Discover our AI-driven insurance solutions designed to simplify processes and enhance customer experiences.</p>
+      <div class="row">
+        <!-- Policy Recommendation -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-file-contract"></i>
+            <h3>Policy Recommendation</h3>
+            <p>AI-powered chatbot to suggest the best insurance policies based on user needs.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Claims Processing -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-gavel"></i>
+            <h3>Claims Processing</h3>
+            <p>Intelligent chatbot to streamline and automate claims submissions.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Insurance FAQs -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-question-circle"></i>
+            <h3>Insurance FAQs</h3>
+            <p>Instant answers to common insurance queries via chatbot.</p>
+            <div class="d-flex justify-content-center">
+              <a href="{% url 'insurance_chatbot' %}" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Risk Assessment -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Risk Assessment</h3>
+            <p>AI agent for analyzing and assessing insurance risks efficiently.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Customer Support Agent -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-headset"></i>
+            <h3>Customer Support Agent</h3>
+            <p>Automate customer support with an AI-driven agent.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Premium Calculator -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-calculator"></i>
+            <h3>Premium Calculator</h3>
+            <p>Intelligent system to calculate insurance premiums accurately.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

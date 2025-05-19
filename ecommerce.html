@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+
+{% block title %}KonvoAI - E-commerce Solutions{% endblock %}
+
+{% block content %}
+  <section class="healthcare-section py-5">
+    <div class="container">
+      <h1 class="text-center mb-4">E-commerce Solutions</h1>
+      <p class="text-center mb-5">Discover our AI-driven E-commerce solutions to enhance customer experience, boost sales, and streamline operations.</p>
+      <div class="row">
+        <!-- Product Recommendation -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Product Recommendation</h3>
+            <p>AI-powered system to suggest products based on user behavior.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Customer Support Chatbot -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-headset"></i>
+            <h3>Customer Support Chatbot</h3>
+            <p>24/7 AI chatbot to assist customers with inquiries.</p>
+            <div class="d-flex justify-content-center">
+              <a href="{% url 'chatbot' %}" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Cart Abandonment Recovery -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-cart-arrow-down"></i>
+            <h3>Cart Abandonment Recovery</h3>
+            <p>AI agent to re-engage customers and recover lost sales.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Inventory Management -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-warehouse"></i>
+            <h3>Inventory Management</h3>
+            <p>AI tool to optimize stock levels and reduce waste.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Personalized Marketing -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Personalized Marketing</h3>
+            <p>AI-driven campaigns tailored to individual preferences.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+        <!-- Order Tracking Assistant -->
+        <div class="col-md-4 mb-4">
+          <div class="healthcare-card">
+            <i class="fas fa-truck"></i>
+            <h3>Order Tracking Assistant</h3>
+            <p>AI chatbot to provide real-time order updates.</p>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary mr-2">Demo</a>
+              <a href="#" class="btn btn-secondary">Get API</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
